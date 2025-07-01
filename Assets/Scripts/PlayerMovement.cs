@@ -6,18 +6,24 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
 
+    public GlobalRefrences globalRefrences;
+
+    public float iiiiiiiii;
     public float speed = 5f;
-    public float gravity = -9.81f * 2; // Double Earth's gravity
+    public float runSpeed = 9f;
+    public float gravity = -9.81f * 2;
     public float jumpHeight = 3f;
 
     public Transform groundCheck;
     public LayerMask groundMask;
     public float groundDistance = 0.5f;
 
-    bool isMoving;
     bool isGrounded;
+    bool isMoving;
+    //bool isWalking;
+    //bool isRunning;
 
-    Vector3 velocity = new Vector3(0, -2f, 0); // Start with slight downward velocity
+    Vector3 velocity = new Vector3(0, -2f, 0);
     Vector3 lastPosition = Vector3.zero;
 
     void Start()
@@ -29,48 +35,66 @@ public class PlayerMovement : MonoBehaviour
     {
         // Ground check
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        //Debug.Log("isGrounded: " + isGrounded);
 
         // Reset vertical velocity when grounded
         if (isGrounded && velocity.y < 0f)
         {
-           // Debug.Log("Grounded and resetting velocity.");
-            velocity.y = 0f; 
+            velocity.y = 0f;
         }
 
-        // Get movement input
+        // Movement input
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(move * speed * Time.deltaTime);
+
+        // Check movement states
+        isMoving = move.magnitude > 0.1f && isGrounded;
+        globalRefrences.isRunning = isMoving && Input.GetKey(KeyCode.LeftShift);
+        globalRefrences.isWalking = isMoving && !globalRefrences.isRunning;
+        
+        if (globalRefrences.isRunning)
+        {
+            globalRefrences.isWalking = false;
+            globalRefrences.isRunning = true;
+        }
+
+        if (globalRefrences.isWalking)
+        {
+            globalRefrences.isRunning = false;
+            globalRefrences.isWalking = true;
+
+        }
+
+        globalRefrences.isMoving = isMoving;
+
+        // Apply movement
+        float currentSpeed = globalRefrences.isRunning ? runSpeed : speed;
+        controller.Move(move * currentSpeed * Time.deltaTime);
 
         // Jumping
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            Debug.Log("Jump triggered");
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
         // Apply gravity
         velocity.y += gravity * Time.deltaTime;
-
-        // Apply movement
         controller.Move(velocity * Time.deltaTime);
-        
 
-        // Check movement
-        if (lastPosition != gameObject.transform.position && isGrounded)
+        // Play walking sound if moving
+        if (globalRefrences.isWalking)
         {
-            isMoving = true;
-            SoundManager.instance.Walkingsound.Play();
-
+            if (!SoundManager.instance.Walkingsound.isPlaying)
+                SoundManager.instance.Walkingsound.Play();
         }
         else
         {
-            isMoving = false;
+            SoundManager.instance.Walkingsound.Stop();
         }
 
-        lastPosition = gameObject.transform.position;
+        // Optional: Debug log
+         Debug.Log($"isMoving: {isMoving}, isWalking: {globalRefrences.isWalking}, isRunning: {globalRefrences.isRunning}");
     }
 }
+

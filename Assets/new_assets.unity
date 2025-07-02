@@ -2453,7 +2453,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 90
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -5686,6 +5686,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1222383149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &811716725
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.9909459
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.506
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3156874
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6088060256359625860, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52da8ab6dd641dc449305a89861aa0cd, type: 2}
+    - target: {fileID: -6088060256359625860, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4fd1ee9ef36623439c60e6143a40cca, type: 2}
+    - target: {fileID: 919132149155446097, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      propertyPath: m_Name
+      value: PistolArm
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1461900013}
+  m_SourcePrefab: {fileID: 100100000, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
 --- !u!1 &848418178
 GameObject:
   m_ObjectHideFlags: 0
@@ -9573,6 +9641,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1222383149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1461900011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 13aa7db4a2201a34e83286026b41fb6e, type: 3}
+  m_PrefabInstance: {fileID: 811716725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1461900013
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461900011}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5697f541056a74f4185660f27efac72f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1464789777
 GameObject:
   m_ObjectHideFlags: 0
@@ -27363,3 +27457,4 @@ SceneRoots:
   - {fileID: 750404752}
   - {fileID: 457798660}
   - {fileID: 723903679}
+  - {fileID: 811716725}

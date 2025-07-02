@@ -5,11 +5,8 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
 
-    public GameObject ak47;
-    public GameObject bomb;
-    public GameObject pistol;
-    public GameObject riffle;
-    public GameObject knife;
+    public GameObject Saiga;
+    public GameObject smg;
 
     private GameObject currentWeapon;
 
@@ -25,11 +22,9 @@ public class WeaponManager : MonoBehaviour
 
     void Start()
     {
-        weaponDict.Add("AK 47", ak47);
-        weaponDict.Add("Bomb", bomb);
-        weaponDict.Add("Pistol", pistol);
-        weaponDict.Add("Riffle", riffle);
-        weaponDict.Add("Knife", knife);
+        weaponDict.Add("Saiga", Saiga);
+        weaponDict.Add("Smg", smg);
+
 
         // Start with no weapon
         DeactivateAllWeapons();
@@ -65,10 +60,10 @@ public class WeaponManager : MonoBehaviour
         switch (name)
         {
             case "Knife": return 0;
-            case "AK 47": return 1;
+            case "Saiga": return 1;
             case "Pistol": return 2;
             case "Riffle": return 3;
-            case "Bomb": return 4;
+            case "smg": return 4;
             default: return -1;
         }
     }

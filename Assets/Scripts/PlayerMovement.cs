@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float iiiiiiiii;
     public float speed = 5f;
-    public float runSpeed = 9f;
+    public float runSpeed = 6f;
     public float gravity = -9.81f * 2;
     public float jumpHeight = 3f;
 

@@ -5779,8 +5779,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalRefrences: {fileID: 14301388}
   iiiiiiiii: 0
-  speed: 1
-  runSpeed: 7
+  speed: 2
+  runSpeed: 5
   gravity: -19.62
   jumpHeight: 1.5
   groundCheck: {fileID: 787356234}

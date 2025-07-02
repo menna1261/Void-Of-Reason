@@ -21,6 +21,8 @@ public class Saiga : BaseWeapon
             Debug.Log("we are trying to reload");
             Reload();
         }
+
+        PlayWalkingOrRunningAnimation();
     }
 
     protected override void PlayShootSound()

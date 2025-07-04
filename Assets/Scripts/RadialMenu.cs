@@ -14,6 +14,9 @@ public class RadialMenu : MonoBehaviour
 
     public GameObject [] selectionParts;
 
+    public float scrollCooldown = 0.2f; // 200ms between scrolls
+    private float scrollTimer = 0f;
+
 
     private void Start()
     {
@@ -21,7 +24,8 @@ public class RadialMenu : MonoBehaviour
         {
             part.SetActive(false);
         }
-        
+
+        WeaponName.text = "None";
         isMenuActive = false;
         Menu.SetActive(false);
         BG.SetActive(false);
@@ -67,29 +71,41 @@ public class RadialMenu : MonoBehaviour
 
     void HandleMenuSelection()
     {
-        if (isMenuActive)
+        if (!isMenuActive) return;
+
+        scrollTimer -= Time.deltaTime;
+        float scroll = Input.mouseScrollDelta.y;
+
+        if (scrollTimer <= 0f)
         {
-            if (Input.GetKeyDown(KeyCode.M))
+            int prevIndex = keyCount;
+
+            if (scroll < 0) // Scroll down
             {
-                Debug.Log("we are selecting parts");
-                if (keyCount >= selectionParts.Length)
-                {
-                    selectionParts[keyCount - 1].SetActive(false);
-                    keyCount = 0;
-                }
-
-                selectionParts[keyCount].SetActive(true);
-
-                string selectedWeapon = getWeaponName(keyCount);
-                WeaponName.text = selectedWeapon;
-
-                if (keyCount > 0)
-                    selectionParts[keyCount - 1].SetActive(false);
-
-                WeaponManager.instance.EquipWeapon(selectedWeapon);
-
-                keyCount++;
+                keyCount = (keyCount + 1) % selectionParts.Length;
+                scrollTimer = scrollCooldown;
             }
+            else if (scroll > 0) // Scroll up
+            {
+                keyCount = (keyCount - 1 + selectionParts.Length) % selectionParts.Length;
+                scrollTimer = scrollCooldown;
+            }
+
+            // Update selection visuals
+            for (int i = 0; i < selectionParts.Length; i++)
+            {
+                selectionParts[i].SetActive(i == keyCount);
+            }
+
+            WeaponName.text = getWeaponName(keyCount);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            WeaponManager.instance.EquipWeapon(WeaponName.text);
+            Debug.Log("Equipped: " + WeaponName.text);
+            Menu.SetActive(false);
+            BG.SetActive(false);
         }
     }
 

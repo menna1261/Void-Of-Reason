@@ -116,10 +116,10 @@ public class RadialMenu : MonoBehaviour
         switch(index)
         {
             case 0:
-                return "AK 47";
+                return "smg";
 
             case 1:
-                return "Bomb";
+                return "Saiga";
 
             case 2:
                 return "Pistol";

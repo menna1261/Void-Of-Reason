@@ -5,12 +5,18 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
 
-    public GameObject Saiga;
-    public GameObject smg;
+    [System.Serializable]
+    public class WeaponEntry
+    {
+        public string weaponName;
+        public GameObject weaponPrefab;
+    }
+
+    public List<WeaponEntry> weaponList = new List<WeaponEntry>();
+    public Transform weaponHolder; // Where weapons are attached (e.g., under camera)
 
     private GameObject currentWeapon;
-
-    private Dictionary<string, GameObject> weaponDict = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> weaponPrefabs = new Dictionary<string, GameObject>();
 
     void Awake()
     {
@@ -22,58 +28,58 @@ public class WeaponManager : MonoBehaviour
 
     void Start()
     {
-        weaponDict.Add("Saiga", Saiga);
-        weaponDict.Add("Smg", smg);
+        foreach (var entry in weaponList)
+        {
+            if (!weaponPrefabs.ContainsKey(entry.weaponName))
+                weaponPrefabs.Add(entry.weaponName, entry.weaponPrefab);
+        }
 
+        Debug.Log("Registered weapons:");
+        foreach (var key in weaponPrefabs.Keys)
+        {
+            Debug.Log("- " + key);
+        }
 
-        // Start with no weapon
-        DeactivateAllWeapons();
     }
 
     public void EquipWeapon(string weaponName)
     {
+        Debug.Log("Trying to equip: " + weaponName);
+
         if (currentWeapon != null)
-            currentWeapon.SetActive(false);
-
-        if (weaponDict.ContainsKey(weaponName))
         {
-            currentWeapon = weaponDict[weaponName];
-            currentWeapon.SetActive(true);
+            Debug.Log("Destroying current weapon: " + currentWeapon.name);
+            Destroy(currentWeapon);
+            currentWeapon = null;
+        }
 
-            Animator animator = currentWeapon.GetComponent<Animator>();
-            if (animator != null)
-            {
-                int index = GetWeaponIndexByName(weaponName);
-                animator.SetInteger("WeaponIndex", index);
-            }
+        if (weaponPrefabs.ContainsKey(weaponName))
+        {
+            Debug.Log("Found weapon in dict: " + weaponName);
+            GameObject newWeapon = Instantiate(weaponPrefabs[weaponName], weaponHolder);
+            newWeapon.transform.localPosition = Vector3.zero;
+            newWeapon.transform.localRotation = Quaternion.identity;
 
-            Debug.Log($"Equipped: {weaponName}");
+            currentWeapon = newWeapon;
+            Debug.Log("Instantiated: " + newWeapon.name);
         }
         else
         {
-            Debug.LogWarning($"Weapon not found: {weaponName}");
+            Debug.LogWarning("Weapon not found in dict: " + weaponName);
         }
     }
+
 
     private int GetWeaponIndexByName(string name)
     {
         switch (name)
         {
-            case "Knife": return 0;
+            case "smg": return 0;
             case "Saiga": return 1;
-            case "Pistol": return 2;
-            case "Riffle": return 3;
-            case "smg": return 4;
+            case "pistol": return 2;
+            case "riffle": return 3;
+            case "knife": return 4;
             default: return -1;
         }
     }
-
-    private void DeactivateAllWeapons()
-    {
-        foreach (var weapon in weaponDict.Values)
-        {
-            weapon.SetActive(false);
-        }
-    }
-
 }

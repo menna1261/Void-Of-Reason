@@ -4,6 +4,8 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
+    public Animator animator;
+
 
     [System.Serializable]
     public class WeaponEntry
@@ -61,6 +63,13 @@ public class WeaponManager : MonoBehaviour
             newWeapon.transform.localRotation = Quaternion.identity;
 
             currentWeapon = newWeapon;
+
+            
+            if (animator != null)
+            {
+                int index = GetWeaponIndexByName(weaponName);
+                animator.SetInteger("WeaponIndex", index);
+            }
             Debug.Log("Instantiated: " + newWeapon.name);
         }
         else

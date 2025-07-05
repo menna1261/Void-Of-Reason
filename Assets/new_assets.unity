@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44666302, g: 0.4965126, b: 0.57486916, a: 1}
+  m_IndirectSpecularColor: {r: 0.449898, g: 0.4999557, b: 0.5755663, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2392,7 +2392,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 127
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4096,6 +4096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 723903679}
   - component: {fileID: 723903678}
+  - component: {fileID: 723903680}
   m_Layer: 0
   m_Name: Weapon Manager
   m_TagString: Untagged
@@ -4115,9 +4116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9f21a4f4624e841a3dfc6af7999a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 723903680}
   weaponList:
   - weaponName: Saiga
-    weaponPrefab: {fileID: 6042377724729263005, guid: 19940b9a8bf3b91439ae3e311081bddd, type: 3}
+    weaponPrefab: {fileID: 8234078746537499217, guid: ae08f7c996c105d49844a32a69823f77, type: 3}
   - weaponName: smg
     weaponPrefab: {fileID: 718399014912078327, guid: 862d306d8701c3543b3301e9d392a8eb, type: 3}
   weaponHolder: {fileID: 1806068050}
@@ -4136,6 +4138,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &723903680
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723903677}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6768d0b17e258f408dff5931c8e5967, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &749034196
 GameObject:
   m_ObjectHideFlags: 0
@@ -5011,7 +5034,6 @@ GameObject:
   - component: {fileID: 848418179}
   - component: {fileID: 848418182}
   - component: {fileID: 848418183}
-  - component: {fileID: 848418184}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5114,29 +5136,6 @@ MonoBehaviour:
   HP: 100
   bloodyScreen: {fileID: 1008640260}
   GameOverScreen: {fileID: 1476248466}
---- !u!114 &848418184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 848418178}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a638e1de269202b45b2e3b64f857a27d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  globalRefrences: {fileID: 0}
-  iiiiiiiii: 0
-  speed: 5
-  runSpeed: 9
-  gravity: -19.62
-  jumpHeight: 3
-  groundCheck: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  groundDistance: 0.5
 --- !u!1 &883180899
 GameObject:
   m_ObjectHideFlags: 0
@@ -9504,7 +9503,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.8218495, b: 0.21176471, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -9563,13 +9562,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596481705}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.32625097, y: -0.32574588, z: 0.35849375, w: 0.8117464}
-  m_LocalPosition: {x: -4.9, y: 11.3, z: 8.6}
+  m_LocalRotation: {x: 0.9220952, y: -0.12464476, z: 0.18039222, w: 0.3188461}
+  m_LocalPosition: {x: -9.4, y: 14.3, z: 10.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 49.749, y: -27.158, z: 34.876}
+  m_LocalEulerAnglesHint: {x: 39.271, y: 160.91, z: 188.53}
 --- !u!1 &1612578120
 GameObject:
   m_ObjectHideFlags: 0

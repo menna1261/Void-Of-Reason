@@ -100,7 +100,7 @@ public class RadialMenu : MonoBehaviour
             WeaponName.text = getWeaponName(keyCount);
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             WeaponManager.instance.EquipWeapon(WeaponName.text);
             Debug.Log("Equipped: " + WeaponName.text);

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.449898, g: 0.4999557, b: 0.5755663, a: 1}
+  m_IndirectSpecularColor: {r: 0.44952685, g: 0.49959886, b: 0.5756768, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2338,7 +2338,7 @@ Transform:
   m_GameObject: {fileID: 399531915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00091, y: 0.7582586, z: 0.53}
+  m_LocalPosition: {x: -0.00091, y: 0.729, z: 0.417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2386,7 +2386,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 80
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -4116,10 +4116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9f21a4f4624e841a3dfc6af7999a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 723903680}
   weaponList:
   - weaponName: Saiga
-    weaponPrefab: {fileID: 8234078746537499217, guid: ae08f7c996c105d49844a32a69823f77, type: 3}
+    weaponPrefab: {fileID: 3385325336613203186, guid: 3325400f14bd05348b4f395462ee02ea, type: 3}
   - weaponName: smg
     weaponPrefab: {fileID: 718399014912078327, guid: 862d306d8701c3543b3301e9d392a8eb, type: 3}
   weaponHolder: {fileID: 1806068050}
@@ -9503,7 +9502,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.8218495, b: 0.21176471, a: 1}
+  m_Color: {r: 0.8792453, g: 0.71775824, b: 0.15760048, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -9562,13 +9561,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596481705}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.9220952, y: -0.12464476, z: 0.18039222, w: 0.3188461}
+  m_LocalRotation: {x: 0.417339, y: 0.145434, z: 0.23942675, w: 0.8644953}
   m_LocalPosition: {x: -9.4, y: 14.3, z: 10.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 39.271, y: 160.91, z: 188.53}
+  m_LocalEulerAnglesHint: {x: 40.688, y: 396.524, z: 404.912}
 --- !u!1 &1612578120
 GameObject:
   m_ObjectHideFlags: 0

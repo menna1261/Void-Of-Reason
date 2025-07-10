@@ -4,7 +4,7 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
-    public Animator animator;
+    //public Animator animator;
 
 
     [System.Serializable]
@@ -15,7 +15,7 @@ public class WeaponManager : MonoBehaviour
     }
 
     public List<WeaponEntry> weaponList = new List<WeaponEntry>();
-    public Transform weaponHolder; // Where weapons are attached (e.g., under camera)
+    public Transform weaponHolder; // Where weapons are attached 
 
     private GameObject currentWeapon;
     private Dictionary<string, GameObject> weaponPrefabs = new Dictionary<string, GameObject>();
@@ -64,13 +64,25 @@ public class WeaponManager : MonoBehaviour
 
             currentWeapon = newWeapon;
 
-            
-            if (animator != null)
+
+            Animator weaponAnimator = currentWeapon.GetComponent<Animator>();
+            if (weaponAnimator != null)
             {
                 int index = GetWeaponIndexByName(weaponName);
-                animator.SetInteger("WeaponIndex", index);
+                weaponAnimator.SetInteger("WeaponIndex", index);
             }
             Debug.Log("Instantiated: " + newWeapon.name);
+
+            var weaponScript = currentWeapon.GetComponent<Saiga>();
+            if (weaponScript != null)
+            {
+                Debug.Log("Weapon script found on: " + currentWeapon.name);
+            }
+            else
+            {
+                Debug.LogWarning("Weapon script missing on: " + currentWeapon.name);
+            }
+
         }
         else
         {

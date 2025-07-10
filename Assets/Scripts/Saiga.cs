@@ -9,7 +9,7 @@ public class Saiga : BaseWeapon
     protected override void Start()
     {
         base.Start();
-        //animator = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     protected override void Update()
@@ -63,12 +63,12 @@ public class Saiga : BaseWeapon
      {
          if (globalRefrences.isWalking == true )
          {
-             animator.SetTrigger("Walking");
+            animator.SetBool("Walking", true);
          }
 
          else if (globalRefrences.isRunning == true )
          {
-             animator.SetTrigger("Running");
+             animator.SetBool("Running", true);
          }
 
          else if (globalRefrences.isMoving == false)

@@ -4,17 +4,38 @@ public class Saiga : BaseWeapon
 {
     public Animator animator;
     public GlobalRefrences globalRefrences;
+    //public WeaponManager weaponManager;
 
 
     protected override void Start()
     {
         base.Start();
-        animator = GetComponentInChildren<Animator>();
+
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>(); // or GetComponent<Animator>()
+        }
+
+        if (animator == null)
+        {
+            Debug.LogWarning("Animator is NULL");
+        }
+        else
+        {
+            Debug.Log("Animator assigned: " + animator.runtimeAnimatorController.name);
+        }
+
     }
 
     protected override void Update()
     {
         base.Update();
+
+        foreach (var param in animator.parameters)
+        {
+            Debug.Log($"Param: {param.name} = {animator.GetBool(param.name)}");
+        }
+
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -23,6 +44,8 @@ public class Saiga : BaseWeapon
         }
 
         PlayWalkingOrRunningAnimation();
+
+   
     }
 
     protected override void PlayShootSound()
@@ -59,23 +82,39 @@ public class Saiga : BaseWeapon
         }
     }
 
-     protected void PlayWalkingOrRunningAnimation()
-     {
-         if (globalRefrences.isWalking == true )
-         {
-            animator.SetBool("Walking", true);
-         }
+    protected void PlayWalkingOrRunningAnimation()
+    {
 
-         else if (globalRefrences.isRunning == true )
-         {
-             animator.SetBool("Running", true);
-         }
+        Debug.Log("Idk why tf we are hwere");
 
-         else if (globalRefrences.isMoving == false)
+        if (animator== null)
+        {
+            Debug.LogWarning("Animator is NULL in walking/running check");
+            return;
+        }
+
+       /* animator.SetBool("Walking", globalRefrences.isWalking);
+        animator.SetBool("Running", globalRefrences.isRunning);*/
+
+        if (globalRefrences.isWalking)
+        {
+            animator.SetTrigger("Walking");
+        }
+        if (globalRefrences.isRunning)
+        {
+            animator.SetTrigger("Running");
+        }
+        if (!globalRefrences.isMoving)
         {
             animator.SetTrigger("Stop");
         }
-     }
- }
+      
+
+        Debug.Log($"isMoving = {globalRefrences.isMoving}, isWalking={globalRefrences.isWalking}, isRunning={globalRefrences.isRunning}");
+
+    }
+
+}
+ 
 
 

@@ -4029,78 +4029,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710403277}
   m_CullTransparentMesh: 1
---- !u!1 &723903677
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 723903679}
-  - component: {fileID: 723903678}
-  - component: {fileID: 723903680}
-  m_Layer: 0
-  m_Name: Weapon Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &723903678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723903677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de9f21a4f4624e841a3dfc6af7999a98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponList:
-  - weaponName: Saiga
-    weaponPrefab: {fileID: 3385325336613203186, guid: 3325400f14bd05348b4f395462ee02ea, type: 3}
-  - weaponName: smg
-    weaponPrefab: {fileID: 718399014912078327, guid: 862d306d8701c3543b3301e9d392a8eb, type: 3}
-  weaponHolder: {fileID: 1806068050}
---- !u!4 &723903679
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723903677}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13837379, y: -5.682683, z: -2.000212}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &723903680
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723903677}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e6768d0b17e258f408dff5931c8e5967, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &749034196
 GameObject:
   m_ObjectHideFlags: 0
@@ -9388,7 +9316,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8792453, g: 0.71775824, b: 0.15760048, a: 1}
+  m_Color: {r: 0.4862727, g: 0.56833684, b: 0.6150943, a: 0.45882353}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -19818,6 +19746,71 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &5298189494523688171
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 219671074429565160, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_Name
+      value: Weapon Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354495185961154934, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.13837379
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354495185961154934, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.682683
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354495185961154934, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.000212
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354495185961154934, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354495185961154934, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354495185961154934, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354495185961154934, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354495185961154934, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354495185961154934, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354495185961154934, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: weaponHolder
+      value: 
+      objectReference: {fileID: 1806068050}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: weaponList.Array.data[1].weaponPrefab
+      value: 
+      objectReference: {fileID: 4212920218012967386, guid: 8113404b5e1d3f146884e1a081d7d023, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d765a232257fb594e9393d4631c868c4, type: 3}
 --- !u!23 &5329080099847015127
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26446,4 +26439,4 @@ SceneRoots:
   - {fileID: 594177247}
   - {fileID: 1832529192}
   - {fileID: 1995859273}
-  - {fileID: 723903679}
+  - {fileID: 5298189494523688171}

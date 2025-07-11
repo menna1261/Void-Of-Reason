@@ -53,19 +53,7 @@ public class PlayerMovement : MonoBehaviour
         globalRefrences.isRunning = isMoving && Input.GetKey(KeyCode.LeftShift);
         globalRefrences.isWalking = isMoving && !globalRefrences.isRunning;
         
-        if (globalRefrences.isRunning)
-        {
-            globalRefrences.isWalking = false;
-            globalRefrences.isRunning = true;
-        }
-
-        if (globalRefrences.isWalking)
-        {
-            globalRefrences.isRunning = false;
-            globalRefrences.isWalking = true;
-
-        }
-
+  
         globalRefrences.isMoving = isMoving;
 
         // Apply movement
@@ -94,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Optional: Debug log
-         Debug.Log($"isMoving: {isMoving}, isWalking: {globalRefrences.isWalking}, isRunning: {globalRefrences.isRunning}");
+        // Debug.Log($"isMoving: {isMoving}, isWalking: {globalRefrences.isWalking}, isRunning: {globalRefrences.isRunning}");
     }
 }
 

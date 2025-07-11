@@ -5,6 +5,7 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
     //public Animator animator;
+    public Animator weaponAnimator;
 
 
     [System.Serializable]
@@ -64,14 +65,22 @@ public class WeaponManager : MonoBehaviour
 
             currentWeapon = newWeapon;
 
+            GlobalRefrences globalRefs = FindObjectOfType<GlobalRefrences>();
 
-            Animator weaponAnimator = currentWeapon.GetComponent<Animator>();
+            if (newWeapon.TryGetComponent<Saiga>(out var saiga))
+            {
+                saiga.globalRefrences = globalRefs;
+            }
+
+            weaponAnimator = currentWeapon.GetComponent<Animator>();
             if (weaponAnimator != null)
             {
                 int index = GetWeaponIndexByName(weaponName);
                 weaponAnimator.SetInteger("WeaponIndex", index);
             }
             Debug.Log("Instantiated: " + newWeapon.name);
+
+
 
             var weaponScript = currentWeapon.GetComponent<Saiga>();
             if (weaponScript != null)

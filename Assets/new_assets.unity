@@ -2338,7 +2338,7 @@ Transform:
   m_GameObject: {fileID: 399531915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00091, y: 0.729, z: 0.417}
+  m_LocalPosition: {x: 0.19, y: 0.751, z: 0.442}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2392,7 +2392,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 127
+    m_Bits: 63
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -19802,6 +19802,10 @@ PrefabInstance:
       propertyPath: weaponHolder
       value: 
       objectReference: {fileID: 1806068050}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: weaponList.Array.data[0].weaponPrefab
+      value: 
+      objectReference: {fileID: 5423995861764754424, guid: 7fdb8084137f1414392e666666eedc72, type: 3}
     - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
       propertyPath: weaponList.Array.data[1].weaponPrefab
       value: 

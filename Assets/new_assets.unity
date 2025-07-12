@@ -7404,7 +7404,9 @@ MonoBehaviour:
   ShootingDelay: 0
   BulletSpawn: {fileID: 0}
   BulletPreFab: {fileID: 0}
-  playerCamera: {fileID: 0}
+  PlayerCamera: {fileID: 0}
+  WeoponCamera: {fileID: 0}
+  ScopingMode: {fileID: 0}
   currentShootingMode: 0
   BulletsPerBurst: 3
   animator: {fileID: 0}
@@ -20444,17 +20446,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: ScopeMode
+      value: 
+      objectReference: {fileID: 1108930466}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: MainCamera
+      value: 
+      objectReference: {fileID: 399531918}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
       propertyPath: weaponHolder
       value: 
       objectReference: {fileID: 1806068050}
     - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
       propertyPath: weaponList.Array.data[0].weaponPrefab
       value: 
-      objectReference: {fileID: 5423995861764754424, guid: 7fdb8084137f1414392e666666eedc72, type: 3}
+      objectReference: {fileID: 8920463864052736279, guid: d7adc3bac6b4f0b4798c8f63bcb33d24, type: 3}
     - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
       propertyPath: weaponList.Array.data[1].weaponPrefab
       value: 
-      objectReference: {fileID: 4212920218012967386, guid: 8113404b5e1d3f146884e1a081d7d023, type: 3}
+      objectReference: {fileID: 1540533563662098077, guid: 5ac9163b8dc6cfc42a9311bdbd04be63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

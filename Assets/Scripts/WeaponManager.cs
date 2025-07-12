@@ -6,6 +6,8 @@ public class WeaponManager : MonoBehaviour
     public static WeaponManager instance;
     //public Animator animator;
     public Animator weaponAnimator;
+    public Camera MainCamera;
+    public GameObject ScopeMode;
 
 
     [System.Serializable]
@@ -66,10 +68,13 @@ public class WeaponManager : MonoBehaviour
             currentWeapon = newWeapon;
 
             GlobalRefrences globalRefs = FindObjectOfType<GlobalRefrences>();
+            //Camera PlayerCam = FindObjectOfType<MainCamera>();
 
             if (newWeapon.TryGetComponent<Saiga>(out var saiga))
             {
                 saiga.globalRefrences = globalRefs;
+                saiga.PlayerCamera = MainCamera;
+               saiga.ScopingMode = ScopeMode;
             }
 
             weaponAnimator = currentWeapon.GetComponent<Animator>();

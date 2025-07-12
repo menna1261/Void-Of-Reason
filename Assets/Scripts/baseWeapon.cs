@@ -15,7 +15,9 @@ public abstract class BaseWeapon : MonoBehaviour
     public float ShootingDelay;
     public Transform BulletSpawn;
     public GameObject BulletPreFab;
-    public Camera playerCamera;
+    public Camera PlayerCamera;
+    public Camera WeoponCamera;
+    public GameObject ScopingMode;
 
    public enum ShootingModes { Single, Auto, Burst }
     public ShootingModes currentShootingMode;
@@ -25,6 +27,11 @@ public abstract class BaseWeapon : MonoBehaviour
     protected bool ReadyToShoot = true;
     protected bool isShooting = false;
     protected bool AllowReset = true;
+
+    private float normalFov;
+    private float ScopedFov = 15f;
+
+    private bool isScoping = false;
 
 
 
@@ -43,9 +50,35 @@ public abstract class BaseWeapon : MonoBehaviour
             BurstBulletsLeft = BulletsPerBurst;
             FireWeapon();
         }
+        Aim();
     }
 
+    void Aim()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            normalFov = PlayerCamera.fieldOfView;
+            isScoping = !isScoping;
+            if (isScoping)
+            {
+                ScopingMode.SetActive(isScoping);
+                WeoponCamera.enabled = !isScoping;
 
+                PlayerCamera.fieldOfView = ScopedFov;
+
+
+            }
+            else
+            {
+                ScopingMode.SetActive(false);
+                PlayerCamera.fieldOfView = 60;
+                WeoponCamera.enabled = true;
+
+            }
+
+            
+        }
+    }
     protected virtual void HandleShootingInput()
     {
         isShooting = Input.GetKeyDown(KeyCode.Mouse0);
@@ -85,7 +118,7 @@ public abstract class BaseWeapon : MonoBehaviour
 
     protected virtual Vector3 CalculateDirectionAndSpread()
     {
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        Ray ray = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         Vector3 targetPoint = Physics.Raycast(ray, out RaycastHit hit) ? hit.point : ray.GetPoint(100);
         Vector3 direction = targetPoint - BulletSpawn.position;
         direction += new Vector3(UnityEngine.Random.Range(-SpreadIntensity, SpreadIntensity),

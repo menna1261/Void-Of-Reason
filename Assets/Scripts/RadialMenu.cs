@@ -122,7 +122,7 @@ public class RadialMenu : MonoBehaviour
                 return "Saiga";
 
             case 2:
-                return "Pistol";
+                return "AK47";
 
             case 3:
                 return "Bomb";

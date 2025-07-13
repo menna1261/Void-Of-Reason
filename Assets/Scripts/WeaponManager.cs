@@ -111,7 +111,7 @@ public class WeaponManager : MonoBehaviour
         {
             case "smg": return 0;
             case "Saiga": return 1;
-            case "pistol": return 2;
+            case "AK47": return 2;
             case "riffle": return 3;
             case "knife": return 4;
             default: return -1;

@@ -9,6 +9,7 @@ public class Pickup : MonoBehaviour
     public GameObject PickupRef;
     public GameObject NewspaperUI;
     public GameObject text;
+    public GameObject glow;
 
     public float triggerDistance = 4f;
 
@@ -49,12 +50,14 @@ public class Pickup : MonoBehaviour
         else
         {
             text.SetActive(false);
+            glow.SetActive(false);
         }
     }
 
     void ApplyGlowEffectAndText()
     {
         text.SetActive(true);
+        glow.SetActive(true);
         // TODO: Add glow material enable here
     }
 }

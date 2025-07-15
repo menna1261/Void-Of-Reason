@@ -59,6 +59,7 @@ public class Pickup : MonoBehaviour
                 isNewsPaperActive = true;
 
             }
+
             else
             {
                 PickDict[CurrentPickup].SetActive(false);

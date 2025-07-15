@@ -84,7 +84,7 @@ public class Pickup : MonoBehaviour
         foreach (PickupEntry entry in Pickups)
         {
             float Distance = Vector3.Distance(playerRef.transform.position, entry.PickupPrefab.transform.position);
-            if (Distance <= triggerDistance)
+            if (CalcDirection(entry.PickupPrefab) >0.7 && Distance <= triggerDistance)
             {
                 if (!isNewsPaperActive)
                     ApplyGlowEffectAndText();
@@ -106,4 +106,14 @@ public class Pickup : MonoBehaviour
         glow.SetActive(true);
         // TODO: Add glow material enable here
     }
+
+    float CalcDirection(GameObject pickup)
+    {
+        Vector3 toPickup = pickup.transform.position - playerRef.transform.position;
+        toPickup.Normalize(); // optional, as Vector3.Dot handles normalization internally
+
+        float dot = Vector3.Dot(playerRef.transform.forward, toPickup);
+        return dot;
+    }
+
 }

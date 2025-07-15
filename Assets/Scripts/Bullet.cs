@@ -10,8 +10,8 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision ObjectWeHit)
     {
-        
 
+        Debug.Log("bullet hit");
         if (ObjectWeHit.gameObject.CompareTag("Wall"))
         {
             CreateBulletImpactEffect(ObjectWeHit);

@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public GlobalRefrences globalRefrences;
 
     public float iiiiiiiii;
-    public float speed = 5f;
+    public float speed = 20f;
     public float runSpeed = 6f;
     public float gravity = -9.81f * 2;
     public float jumpHeight = 3f;
@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundMask;
     public float groundDistance = 0.5f;
+    public float fallMultiplier = 2.5f;
 
     bool isGrounded;
     bool isMoving;
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Ground check
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
+        Debug.Log($"isGrounded : {isGrounded}");
         // Reset vertical velocity when grounded
         if (isGrounded && velocity.y < 0f)
         {
@@ -67,7 +68,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Apply gravity
-        velocity.y += gravity * Time.deltaTime;
+        if (velocity.y < 0)
+        {
+            velocity.y += gravity * fallMultiplier * Time.deltaTime;
+        }
+        else
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
         controller.Move(velocity * Time.deltaTime);
 
         // Play walking sound if moving

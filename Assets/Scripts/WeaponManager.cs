@@ -4,10 +4,13 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
+    public GameObject menu;
     //public Animator animator;
     public Animator weaponAnimator;
     public Camera MainCamera;
     public GameObject ScopeMode;
+    public GameObject[] Weapons;
+
 
 
     [System.Serializable]
@@ -78,14 +81,17 @@ public class WeaponManager : MonoBehaviour
             }
 
             weaponAnimator = currentWeapon.GetComponent<Animator>();
-            if (weaponAnimator != null)
+/*            if (weaponAnimator != null)
             {
                 int index = GetWeaponIndexByName(weaponName);
                 weaponAnimator.SetInteger("WeaponIndex", index);
-            }
+            }*/
             Debug.Log("Instantiated: " + newWeapon.name);
 
-
+            //menu.AddWeapon(GetWeaponIndexByName(weaponName));
+            //menu.GetComponent<RadialMenu>().AddWeapon(GetWeaponIndexByName(weaponName));
+            Weapons[GetWeaponIndexByName(weaponName)].SetActive(true);
+            Debug.Log("Weapon added www");
 
             var weaponScript = currentWeapon.GetComponent<Saiga>();
             if (weaponScript != null)

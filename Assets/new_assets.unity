@@ -254,6 +254,7 @@ MonoBehaviour:
   WeaponName: {fileID: 0}
   isMenuActive: 0
   selectionParts: []
+  Weapons: []
   scrollCooldown: 0.2
 --- !u!114 &14301388 stripped
 MonoBehaviour:
@@ -719,7 +720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &91193980
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1935,7 +1936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &354367888
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6270,7 +6271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1205383011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6956,7 +6957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1425716606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10271,7 +10272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1937136208
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10501,7 +10502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1965861263
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10626,6 +10627,10 @@ MonoBehaviour:
   - {fileID: 1616477497}
   - {fileID: 949053086}
   - {fileID: 1800371573}
+  Weapons:
+  - {fileID: 91193979}
+  - {fileID: 1425716605}
+  - {fileID: 1205383010}
   scrollCooldown: 0.2
 --- !u!224 &1995859273
 RectTransform:
@@ -10665,7 +10670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2000074861
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19678,6 +19683,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 1995859271}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
       propertyPath: ScopeMode
       value: 
       objectReference: {fileID: 1108930466}
@@ -19689,6 +19698,22 @@ PrefabInstance:
       propertyPath: weaponHolder
       value: 
       objectReference: {fileID: 1806068050}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: Weapons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: Weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 91193979}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: Weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1425716605}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: Weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 1205383010}
     - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
       propertyPath: weaponList.Array.size
       value: 3

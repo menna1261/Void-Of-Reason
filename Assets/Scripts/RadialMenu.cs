@@ -109,7 +109,15 @@ public class RadialMenu : MonoBehaviour
         }
     }
 
+ /*   public void AddWeapon(int index)
+    {
+        
+        if (!isMenuActive) return;
+        Weapons[index].SetActive(true);
+        Debug.Log("Weapon added");
+    }
 
+*/
 
     string getWeaponName(int index)
     {

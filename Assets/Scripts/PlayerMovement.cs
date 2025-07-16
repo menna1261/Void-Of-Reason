@@ -81,12 +81,12 @@ public class PlayerMovement : MonoBehaviour
         // Play walking sound if moving
         if (globalRefrences.isWalking)
         {
-            if (!SoundManager.instance.Walkingsound.isPlaying)
-                SoundManager.instance.Walkingsound.Play();
+           /* if (!SoundManager.instance.Walkingsound.isPlaying)
+                SoundManager.instance.Walkingsound.Play();*/
         }
         else
         {
-            SoundManager.instance.Walkingsound.Stop();
+           // SoundManager.instance.Walkingsound.Stop();
         }
 
         // Optional: Debug log

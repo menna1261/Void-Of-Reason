@@ -5,19 +5,40 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance { get; set; }
+    public GlobalRefrences globalRefrences;
 
-    public AudioSource AK_sound;
-    public AudioSource Walkingsound;
-    public AudioClip walking;
+    public AudioSource Music;
+    public AudioSource SFX;
 
-    public AudioClip zombieWalking;
-    public AudioSource zombieChannel;
+    public AudioClip BGMusic;
+    public AudioClip WalkingSound;
+    public AudioClip RunningSound;
+    public AudioClip GlassBreak;
 
-    public AudioSource glassChannel;
-    public AudioClip glassBreaking;
 
-    public AudioClip bgSound;
-    public AudioSource bgsoundChannel;
+    private void Update()
+    {
+        PlayRunningSound();
+    }
+
+
+    private void PlayRunningSound()
+    {
+        if (globalRefrences.isRunning)
+        {
+            Debug.Log("running ");
+            SFX.clip = RunningSound; SFX.Play();
+        }
+
+        if(!globalRefrences.isWalking) {
+
+            Debug.Log("Walking");
+            SFX.clip = WalkingSound;
+            SFX.Play();
+        
+        }
+
+    }
 
     private void Awake()
     {

@@ -26,7 +26,7 @@ public class ZombieIdleState : StateMachineBehaviour
         {
             animator.SetBool("isPatroling",true);
         }
-        SoundManager.instance.zombieChannel.Play();
+       // SoundManager.instance.zombieChannel.Play();
         float distanceFromPlayer = Vector3.Distance(Player.position,animator.transform.position);
 
         if(distanceFromPlayer < DetectionAreaRadius)

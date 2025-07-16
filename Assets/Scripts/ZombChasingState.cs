@@ -30,7 +30,7 @@ public class ZombChasingState : StateMachineBehaviour
         agent.SetDestination(player.position);
         animator.transform.LookAt(player);
 
-        SoundManager.instance.zombieChannel.Play();
+       // SoundManager.instance.zombieChannel.Play();
         float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
 
         if(distanceFromPlayer > stopChasingDistance)

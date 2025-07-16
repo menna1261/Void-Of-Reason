@@ -123,7 +123,7 @@ public class Weapon : MonoBehaviour
         //MuzzleEffect.GetComponent<ParticleSystem>().Play();
         animator.SetTrigger("shooting");
         Debug.Log("shooting animation is playing");
-        SoundManager.instance.AK_sound.Play();
+       // SoundManager.instance.AK_sound.Play();
 
         //Get the shooting direction 
         Vector3 ShootingDirection = CalculateDirectionAndSpread().normalized;

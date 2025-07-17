@@ -20,7 +20,8 @@ public class Bullet : MonoBehaviour
 
         if (ObjectWeHit.gameObject.CompareTag("bottle"))
         {
-           // SoundManager.instance.glassChannel.Play();
+
+            SoundManager.instance.playGlassSound();
             ObjectWeHit.gameObject.GetComponent<bottle>().shatter();
             
         }

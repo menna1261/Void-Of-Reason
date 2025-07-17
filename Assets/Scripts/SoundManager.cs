@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource Music;
     public AudioSource SFX;
+    public AudioSource GlasSBreak;
 
     public AudioClip BGMusic;
     public AudioClip WalkingSound;
@@ -26,19 +27,38 @@ public class SoundManager : MonoBehaviour
     {
         if (globalRefrences.isRunning)
         {
-            Debug.Log("running ");
-            SFX.clip = RunningSound; SFX.Play();
+            if (SFX.clip != RunningSound || !SFX.isPlaying)
+            {
+                SFX.clip = RunningSound;
+                SFX.Play();
+            }
         }
-
-        if(!globalRefrences.isWalking) {
-
-            Debug.Log("Walking");
-            SFX.clip = WalkingSound;
-            SFX.Play();
-        
+        else if (globalRefrences.isWalking)
+        {
+            if (SFX.clip != WalkingSound || !SFX.isPlaying)
+            {
+                SFX.clip = WalkingSound;
+                SFX.Play();
+            }
         }
+        else
+        {
+            // Stop SFX if player is neither running nor walking
+            if (SFX.isPlaying)
+            {
+                SFX.Stop();
+            }
+        }
+    }
+
+    public void playGlassSound()
+    {
+        GlasSBreak.Play();
+
+
 
     }
+
 
     private void Awake()
     {

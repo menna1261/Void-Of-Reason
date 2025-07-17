@@ -11,6 +11,12 @@ public class GlobalRefrences : MonoBehaviour
     public bool isRunning;
     public bool isMoving;
 
+
+    private void Update()
+    {
+        Debug.Log($"isWalkiing : {isWalking}, isRunning : {isRunning}");
+    }
+
    
     private void Awake()
     {

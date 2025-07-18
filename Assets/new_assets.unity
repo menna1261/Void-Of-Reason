@@ -2975,11 +2975,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8106490546415090605, guid: d7adc3bac6b4f0b4798c8f63bcb33d24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.462
+      value: -3.464
       objectReference: {fileID: 0}
     - target: {fileID: 8106490546415090605, guid: d7adc3bac6b4f0b4798c8f63bcb33d24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.99
+      value: -6.967
       objectReference: {fileID: 0}
     - target: {fileID: 8106490546415090605, guid: d7adc3bac6b4f0b4798c8f63bcb33d24, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7864,6 +7864,7 @@ MonoBehaviour:
   text: {fileID: 806918340}
   glow: {fileID: 1058065701}
   weaponManager: {fileID: 140892750}
+  GlowMaterial: {fileID: 2100000, guid: 1d64d8fa441d27b4baa65b4bd694b5a1, type: 2}
   triggerDistance: 4
   Pickups:
   - PickupName: NewsPaper
@@ -18547,6 +18548,48 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7676882487119465080, guid: fa31af1a8abbb674d9aef37eb58b1e29, type: 3}
   m_PrefabInstance: {fileID: 6822316892008476766}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &3614050816398372580
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3614050816398372578}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!54 &3647250642663773309
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20728,7 +20771,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7581395851519486529, guid: fa31af1a8abbb674d9aef37eb58b1e29, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1058065702}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7676882487119465080, guid: fa31af1a8abbb674d9aef37eb58b1e29, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3614050816398372580}
   m_SourcePrefab: {fileID: 100100000, guid: fa31af1a8abbb674d9aef37eb58b1e29, type: 3}
 --- !u!4 &6854035111460503095
 Transform:

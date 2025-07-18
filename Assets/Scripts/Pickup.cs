@@ -11,8 +11,9 @@ public class Pickup : MonoBehaviour
     public GameObject text;
     public GameObject glow;
     public WeaponManager weaponManager;
+    public Material GlowMaterial;
 
-    public float triggerDistance = 1f;
+    public float triggerDistance = 4f;
     bool isNewsPaperActive;
 
 
@@ -42,36 +43,40 @@ public class Pickup : MonoBehaviour
 
         foreach (var key in PickDict.Keys)
         {
+            Debug.Log("pick dict");
             Debug.Log($"--{key}");
         }
     }
 
     void Update()
     {
-       string CurrentPickup =  CalcDistance();
+        string CurrentPickup = CalcDistance();
+
+        Debug.Log($"current pickup :  {CurrentPickup}");
+
         if (Input.GetKeyDown(KeyCode.P))
         {
-            text.SetActive(false);
-
-            if(CurrentPickup == "NewsPaper")
+            if (!string.IsNullOrEmpty(CurrentPickup))
             {
-                NewspaperUI.SetActive(true);
-                isNewsPaperActive = true;
+                text.SetActive(false);
 
+                if (CurrentPickup == "NewsPaper")
+                {
+                    NewspaperUI.SetActive(true);
+                    isNewsPaperActive = true;
+                }
+                else
+                {
+                    if (PickDict.ContainsKey(CurrentPickup))
+                        PickDict[CurrentPickup].SetActive(false);
+
+                    weaponManager.EquipWeapon(CurrentPickup);
+                }
             }
-
-            else
-            {
-                PickDict[CurrentPickup].SetActive(false);
-                weaponManager.EquipWeapon(CurrentPickup);
-
-
-            }
-
-
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape) && isNewsPaperActive)
+
+        if (Input.GetKeyDown(KeyCode.Escape) && isNewsPaperActive)
         {
             isNewsPaperActive=false;
             NewspaperUI.SetActive(false);
@@ -85,11 +90,19 @@ public class Pickup : MonoBehaviour
         foreach (PickupEntry entry in Pickups)
         {
             float Distance = Vector3.Distance(playerRef.transform.position, entry.PickupPrefab.transform.position);
-            if (CalcDirection(entry.PickupPrefab) >0.7 && Distance <= triggerDistance)
+            if (CalcDirection(entry.PickupPrefab) > 0.7 && Distance <= triggerDistance)
             {
-                if (!isNewsPaperActive)
-                    ApplyGlowEffectAndText();
-                return entry.PickupName;
+                if (entry.PickupName == "NewsPaper")
+                {
+                    if (!isNewsPaperActive)
+                        ApplyGlowEffectAndText();
+                    return entry.PickupName;
+                }
+
+                else
+                {
+                    entry.PickupPrefab.GetComponent<Renderer>().material = GlowMaterial;
+                }
             }
             else
             {

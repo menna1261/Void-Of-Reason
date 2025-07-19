@@ -5,6 +5,7 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
     public GameObject menu;
+    public SoundManager soundManager;
     //public Animator animator;
     public Animator weaponAnimator;
     public Camera MainCamera;
@@ -81,12 +82,15 @@ public class WeaponManager : MonoBehaviour
             }
 
             weaponAnimator = currentWeapon.GetComponent<Animator>();
-/*            if (weaponAnimator != null)
-            {
-                int index = GetWeaponIndexByName(weaponName);
-                weaponAnimator.SetInteger("WeaponIndex", index);
-            }*/
+            /*            if (weaponAnimator != null)
+                        {
+                            int index = GetWeaponIndexByName(weaponName);
+                            weaponAnimator.SetInteger("WeaponIndex", index);
+                        }*/
+
+            soundManager.PlayEquipSound();
             Debug.Log("Instantiated: " + newWeapon.name);
+
 
             //menu.AddWeapon(GetWeaponIndexByName(weaponName));
             //menu.GetComponent<RadialMenu>().AddWeapon(GetWeaponIndexByName(weaponName));

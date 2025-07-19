@@ -8936,7 +8936,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -11090,6 +11090,7 @@ MonoBehaviour:
   WalkingSound: {fileID: 8300000, guid: edf70b2b653dbc946b1d98b60e32c0e3, type: 3}
   RunningSound: {fileID: 8300000, guid: 294e41fff9b918d4886f32ce1ff261cb, type: 3}
   GlassBreak: {fileID: 8300000, guid: 74fa4f5c41a795a4d8d9aa0cf8747f32, type: 3}
+  EquipSound: {fileID: 8300000, guid: b51df2d5d80290749b95eb4f9457a01b, type: 3}
 --- !u!4 &1776778862
 Transform:
   m_ObjectHideFlags: 0
@@ -21269,6 +21270,10 @@ PrefabInstance:
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 399531918}
+    - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1776778861}
     - target: {fileID: 6820026647507546910, guid: d765a232257fb594e9393d4631c868c4, type: 3}
       propertyPath: weaponHolder
       value: 

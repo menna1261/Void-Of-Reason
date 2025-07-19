@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip WalkingSound;
     public AudioClip RunningSound;
     public AudioClip GlassBreak;
+    public AudioClip EquipSound;
 
 
 
@@ -59,7 +60,11 @@ public class SoundManager : MonoBehaviour
 
 
     }
-
+    public void PlayEquipSound()
+    {
+        SFX.clip = EquipSound;
+        SFX.Play();
+    }
 
     private void Awake()
     {

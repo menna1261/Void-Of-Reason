@@ -11,11 +11,11 @@ public class Pickup : MonoBehaviour
     public GameObject text;
     public GameObject glow;
     public WeaponManager weaponManager;
-    public Material GlowMaterial;
+    public GameObject GlowMaterialSaiga;
+    public GameObject GlowMaterialSmg;
 
     public float triggerDistance = 4f;
     bool isNewsPaperActive;
-
 
     [System.Serializable]
     public class PickupEntry
@@ -23,16 +23,17 @@ public class Pickup : MonoBehaviour
         public string PickupName;
         public GameObject PickupPrefab;
     }
- 
+
     public List<PickupEntry> Pickups = new List<PickupEntry>();
-    private Dictionary<string , GameObject> PickDict = new Dictionary<string, GameObject>();
-
-
+    private Dictionary<string, GameObject> PickDict = new Dictionary<string, GameObject>();
 
     void Start()
     {
         text.SetActive(false);
-        
+        glow.SetActive(false);
+        GlowMaterialSaiga.SetActive(false);
+        GlowMaterialSmg.SetActive(false);
+
         foreach (PickupEntry entry in Pickups)
         {
             if (!PickDict.ContainsKey(entry.PickupName))
@@ -40,19 +41,11 @@ public class Pickup : MonoBehaviour
                 PickDict.Add(entry.PickupName, entry.PickupPrefab);
             }
         }
-
-        foreach (var key in PickDict.Keys)
-        {
-            Debug.Log("pick dict");
-            Debug.Log($"--{key}");
-        }
     }
 
     void Update()
     {
         string CurrentPickup = CalcDistance();
-
-        Debug.Log($"current pickup :  {CurrentPickup}");
 
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -68,48 +61,73 @@ public class Pickup : MonoBehaviour
                 else
                 {
                     if (PickDict.ContainsKey(CurrentPickup))
+                    {
+                        // Hide glow
+                        if (CurrentPickup == "Saiga")
+                            GlowMaterialSaiga.SetActive(false);
+                        else if (CurrentPickup == "smg")
+                            GlowMaterialSmg.SetActive(false);
+
+                        // Disable the actual weapon pickup after pressing P
                         PickDict[CurrentPickup].SetActive(false);
 
-                    weaponManager.EquipWeapon(CurrentPickup);
+                        // Equip the weapon
+                        weaponManager.EquipWeapon(CurrentPickup);
+                        text.SetActive(false);
+                    }
                 }
             }
         }
 
-
         if (Input.GetKeyDown(KeyCode.Escape) && isNewsPaperActive)
         {
-            isNewsPaperActive=false;
+            isNewsPaperActive = false;
             NewspaperUI.SetActive(false);
         }
     }
 
-
-    //Returns the name of the closest pickup
+    // Returns the name of the closest valid pickup
     string CalcDistance()
     {
         foreach (PickupEntry entry in Pickups)
         {
-            float Distance = Vector3.Distance(playerRef.transform.position, entry.PickupPrefab.transform.position);
-            if (CalcDirection(entry.PickupPrefab) > 0.7 && Distance <= triggerDistance)
+            GameObject pickup = entry.PickupPrefab;
+
+            if (!pickup.activeSelf)
+                continue; // skip if already picked up
+
+            float Distance = Vector3.Distance(playerRef.transform.position, pickup.transform.position);
+
+            if (CalcDirection(pickup) > 0.7f && Distance <= triggerDistance)
             {
+                text.SetActive(true);
+
                 if (entry.PickupName == "NewsPaper")
                 {
                     if (!isNewsPaperActive)
                         ApplyGlowEffectAndText();
                     return entry.PickupName;
                 }
-
                 else
                 {
-                    text.SetActive(true);
-                    entry.PickupPrefab.GetComponent<Renderer>().material = GlowMaterial;
+                    if (entry.PickupName == "Saiga")
+                        GlowMaterialSaiga.SetActive(true);
+                    else if (entry.PickupName == "smg")
+                        GlowMaterialSmg.SetActive(true);
+
                     return entry.PickupName;
                 }
             }
             else
             {
+                // Out of range or not facing
                 text.SetActive(false);
                 glow.SetActive(false);
+
+                if (entry.PickupName == "Saiga")
+                    GlowMaterialSaiga.SetActive(false);
+                else if (entry.PickupName == "smg")
+                    GlowMaterialSmg.SetActive(false);
             }
         }
 
@@ -120,16 +138,13 @@ public class Pickup : MonoBehaviour
     {
         text.SetActive(true);
         glow.SetActive(true);
-        // TODO: Add glow material enable here
     }
 
     float CalcDirection(GameObject pickup)
     {
         Vector3 toPickup = pickup.transform.position - playerRef.transform.position;
-        toPickup.Normalize(); // optional, as Vector3.Dot handles normalization internally
+        toPickup.Normalize();
 
-        float dot = Vector3.Dot(playerRef.transform.forward, toPickup);
-        return dot;
+        return Vector3.Dot(playerRef.transform.forward, toPickup);
     }
-
 }

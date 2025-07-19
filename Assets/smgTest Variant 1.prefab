@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: globalRefrences
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3229358256266762133, guid: cfc859ec6fe7c174692a72a94ca07907, type: 3}
+      propertyPath: currentShootingMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3364798326408640064, guid: cfc859ec6fe7c174692a72a94ca07907, type: 3}
       propertyPath: m_LocalScale.x
       value: 4

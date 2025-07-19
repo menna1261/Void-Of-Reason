@@ -101,7 +101,9 @@ public class Pickup : MonoBehaviour
 
                 else
                 {
+                    text.SetActive(true);
                     entry.PickupPrefab.GetComponent<Renderer>().material = GlowMaterial;
+                    return entry.PickupName;
                 }
             }
             else

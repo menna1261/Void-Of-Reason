@@ -4,6 +4,7 @@ public class Saiga : BaseWeapon
 {
     public Animator animator;
     public GlobalRefrences globalRefrences;
+    public GameObject soundManager;
     //public WeaponManager weaponManager;
 
 

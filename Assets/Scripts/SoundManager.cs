@@ -10,12 +10,15 @@ public class SoundManager : MonoBehaviour
     public AudioSource Music;
     public AudioSource SFX;
     public AudioSource GlasSBreak;
+    public AudioSource equipment;
 
     public AudioClip BGMusic;
     public AudioClip WalkingSound;
     public AudioClip RunningSound;
     public AudioClip GlassBreak;
     public AudioClip EquipSound;
+    public AudioClip ReloadigSmg;
+
 
 
 
@@ -62,7 +65,13 @@ public class SoundManager : MonoBehaviour
     }
     public void PlayEquipSound()
     {
-        SFX.clip = EquipSound;
+        Debug.Log("equip sound ");
+        equipment.Play();
+    }
+
+    public void ReloadSmg()
+    {
+        SFX.clip = ReloadigSmg;
         SFX.Play();
     }
 

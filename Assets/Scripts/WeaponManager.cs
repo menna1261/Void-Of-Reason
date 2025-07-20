@@ -71,6 +71,7 @@ public class WeaponManager : MonoBehaviour
 
             currentWeapon = newWeapon;
 
+            SoundManager soundManager = FindObjectOfType<SoundManager>();
             GlobalRefrences globalRefs = FindObjectOfType<GlobalRefrences>();
             //Camera PlayerCam = FindObjectOfType<MainCamera>();
 
@@ -79,6 +80,7 @@ public class WeaponManager : MonoBehaviour
                 saiga.globalRefrences = globalRefs;
                 saiga.PlayerCamera = MainCamera;
                saiga.ScopingMode = ScopeMode;
+                saiga.soundManager = soundManager;
             }
 
             weaponAnimator = currentWeapon.GetComponent<Animator>();

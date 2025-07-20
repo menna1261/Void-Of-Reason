@@ -4,7 +4,7 @@ public class Saiga : BaseWeapon
 {
     public Animator animator;
     public GlobalRefrences globalRefrences;
-    public GameObject soundManager;
+    public SoundManager soundManager;
     //public WeaponManager weaponManager;
 
 
@@ -80,6 +80,7 @@ public class Saiga : BaseWeapon
         {
             Debug.Log("we are fucking reloading ");
             animator.SetTrigger("Reloading");
+            StartCoroutine(soundManager.ReloadSmg());
         }
     }
 

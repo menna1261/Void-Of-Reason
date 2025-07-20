@@ -11,13 +11,14 @@ public class SoundManager : MonoBehaviour
     public AudioSource SFX;
     public AudioSource GlasSBreak;
     public AudioSource equipment;
+    public AudioSource ReloadingSmg;
 
     public AudioClip BGMusic;
     public AudioClip WalkingSound;
     public AudioClip RunningSound;
     public AudioClip GlassBreak;
-    public AudioClip EquipSound;
-    public AudioClip ReloadigSmg;
+    public AudioClip ChamberSound;
+    public AudioClip reloadigSmg;
 
 
 
@@ -69,10 +70,21 @@ public class SoundManager : MonoBehaviour
         equipment.Play();
     }
 
-    public void ReloadSmg()
+    public IEnumerator ReloadSmg()
     {
-        SFX.clip = ReloadigSmg;
-        SFX.Play();
+        Debug.Log("Playing reload sound");
+        ReloadingSmg.Play();
+        yield return new WaitForSeconds(reloadigSmg.length);
+        ReloadingSmg.clip = ChamberSound;
+        Debug.Log("Playing Chamber sound");
+        ReloadingSmg.Play();
+        yield return new WaitForSeconds(ChamberSound.length);
+        ResetClips();
+    }
+
+    public void ResetClips()
+    {
+        ReloadingSmg.clip = reloadigSmg;
     }
 
     private void Awake()

@@ -11448,6 +11448,9 @@ MonoBehaviour:
   GlassBreak: {fileID: 8300000, guid: 74fa4f5c41a795a4d8d9aa0cf8747f32, type: 3}
   ChamberSound: {fileID: 8300000, guid: 3ab1a1c5618fa3341b3d1946091ade01, type: 3}
   reloadigSmg: {fileID: 8300000, guid: 5044a1b8e79e1954dad3bc5797af36a6, type: 3}
+  ShootingSmg: {fileID: 8300000, guid: a2fbd50a202500e4ca29412976d077e2, type: 3}
+  ShootingSaiga: {fileID: 0}
+  ShootingAK: {fileID: 0}
 --- !u!4 &1776778862
 Transform:
   m_ObjectHideFlags: 0

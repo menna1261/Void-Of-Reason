@@ -5,6 +5,8 @@ public class Saiga : BaseWeapon
     public Animator animator;
     public GlobalRefrences globalRefrences;
     public SoundManager soundManager;
+    public AudioSource ShootingAudioSource;
+    public AudioClip ShootingSound;
     //public WeaponManager weaponManager;
 
 
@@ -51,7 +53,7 @@ public class Saiga : BaseWeapon
 
     protected override void PlayShootSound()
     {
-        // Play audio here
+        ShootingAudioSource.Play();
     }
 
     protected override void PlayMuzzleEffect()

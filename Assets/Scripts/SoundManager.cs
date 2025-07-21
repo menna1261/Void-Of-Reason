@@ -19,6 +19,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip GlassBreak;
     public AudioClip ChamberSound;
     public AudioClip reloadigSmg;
+    public AudioClip ShootingSmg;
+    public AudioClip ShootingSaiga;
+    public AudioClip ShootingAK;
 
 
 
@@ -80,6 +83,12 @@ public class SoundManager : MonoBehaviour
         ReloadingSmg.Play();
         yield return new WaitForSeconds(ChamberSound.length);
         ResetClips();
+    }
+
+    public void ShootSmg()
+    {
+        SFX.clip = ShootingSmg;
+        SFX.Play();
     }
 
     public void ResetClips()

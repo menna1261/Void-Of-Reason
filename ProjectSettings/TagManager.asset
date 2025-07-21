@@ -10,6 +10,9 @@ TagManager:
   - zombie
   - Waypoints
   - zombieHand
+  - smg
+  - Saiga
+  - AK47
   layers:
   - Default
   - TransparentFX

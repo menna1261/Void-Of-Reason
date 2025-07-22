@@ -133,13 +133,13 @@ public class RadialMenu : MonoBehaviour
                 return "AK47";
 
             case 3:
-                return "Bomb";
+                return "None";
 
             case 4:
-                return "Riffle";
+                return "None";
 
             case 5:
-                return "Knife";
+                return "None";
         }
 
         return "None";

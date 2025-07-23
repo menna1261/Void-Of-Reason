@@ -13,8 +13,10 @@ public class Pickup : MonoBehaviour
     public WeaponManager weaponManager;
     public GameObject GlowMaterialSaiga;
     public GameObject GlowMaterialSmg;
+    public GameObject GlowMaterialAK;
 
-    public float triggerDistance = 4f;
+
+    public float triggerDistance = 6f;
     bool isNewsPaperActive;
 
     [System.Serializable]
@@ -33,6 +35,7 @@ public class Pickup : MonoBehaviour
         glow.SetActive(false);
         GlowMaterialSaiga.SetActive(false);
         GlowMaterialSmg.SetActive(false);
+        GlowMaterialAK.SetActive(false);
 
         foreach (PickupEntry entry in Pickups)
         {
@@ -45,7 +48,7 @@ public class Pickup : MonoBehaviour
 
     void Update()
     {
-        string CurrentPickup = CalcDistance();
+        string CurrentPickup = isNewsPaperActive ? "" : CalcDistance();
 
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -55,8 +58,10 @@ public class Pickup : MonoBehaviour
 
                 if (CurrentPickup == "NewsPaper")
                 {
+                    text.SetActive(false);
                     NewspaperUI.SetActive(true);
                     isNewsPaperActive = true;
+                    Time.timeScale = 0f;
                 }
                 else
                 {
@@ -67,13 +72,16 @@ public class Pickup : MonoBehaviour
                             GlowMaterialSaiga.SetActive(false);
                         else if (CurrentPickup == "smg")
                             GlowMaterialSmg.SetActive(false);
-
+                        else if(CurrentPickup == "AK47")
+                            GlowMaterialAK.SetActive(false);
                         // Disable the actual weapon pickup after pressing P
                         PickDict[CurrentPickup].SetActive(false);
 
                         // Equip the weapon
                         weaponManager.EquipWeapon(CurrentPickup);
                         text.SetActive(false);
+
+                        Destroy(PickDict[CurrentPickup]);
                     }
                 }
             }
@@ -83,6 +91,7 @@ public class Pickup : MonoBehaviour
         {
             isNewsPaperActive = false;
             NewspaperUI.SetActive(false);
+            Time.timeScale = 1f;
         }
     }
 
@@ -97,8 +106,8 @@ public class Pickup : MonoBehaviour
                 continue; // skip if already picked up
 
             float Distance = Vector3.Distance(playerRef.transform.position, pickup.transform.position);
-
-            if (CalcDirection(pickup) > 0.7f && Distance <= triggerDistance)
+            Debug.Log($"Distance : {Distance}");
+            if (CalcDirection(pickup) > 0.4f && Distance <= triggerDistance)
             {
                 text.SetActive(true);
 
@@ -114,7 +123,9 @@ public class Pickup : MonoBehaviour
                         GlowMaterialSaiga.SetActive(true);
                     else if (entry.PickupName == "smg")
                         GlowMaterialSmg.SetActive(true);
-
+                    else if (entry.PickupName == "AK47") 
+                        GlowMaterialAK.SetActive(true);
+                    text.SetActive(true);
                     return entry.PickupName;
                 }
             }
@@ -128,6 +139,8 @@ public class Pickup : MonoBehaviour
                     GlowMaterialSaiga.SetActive(false);
                 else if (entry.PickupName == "smg")
                     GlowMaterialSmg.SetActive(false);
+                else if(entry.PickupName == "AK47")
+                    GlowMaterialAK.SetActive(false);
             }
         }
 

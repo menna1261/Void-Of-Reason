@@ -34,38 +34,36 @@ public class RadialMenu : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("update");
         if (Input.GetKeyDown(KeyCode.L))
         {
-
-            Debug.Log("Input detected");
-            isMenuActive= !isMenuActive;
+            isMenuActive = !isMenuActive;
             BG.SetActive(isMenuActive);
             Menu.SetActive(isMenuActive);
 
+            if (isMenuActive)
+            {
+                Time.timeScale = 0f; // pause game
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Debug.Log("Menu is active");
+            }
+            else
+            {
+                Time.timeScale = 1f; // resume game
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                keyCount = 0;
+                WeaponName.text = "None";
+                Debug.Log("Menu is inactive");
+            }
 
             foreach (var part in selectionParts)
             {
                 part.SetActive(false);
             }
-
-
-            if (isMenuActive)
-            {
-                Debug.Log("Menu is active");
-
-            }
-
-            else
-            {
-                keyCount = 0;
-
-                Debug.Log("Menu is inactive - update");
-
-                WeaponName.text = "None";
-            }
         }
 
+        // Always allow menu logic to run
         HandleMenuSelection();
     }
 
@@ -73,51 +71,72 @@ public class RadialMenu : MonoBehaviour
     {
         if (!isMenuActive) return;
 
-        scrollTimer -= Time.deltaTime;
+        // Use unscaled time while paused
+        float delta = Time.unscaledDeltaTime;
+        scrollTimer -= delta;
+
         float scroll = Input.mouseScrollDelta.y;
 
         if (scrollTimer <= 0f)
         {
             int prevIndex = keyCount;
 
-            if (scroll < 0) // Scroll down
+            if (scroll < 0)
             {
                 keyCount = (keyCount + 1) % selectionParts.Length;
                 scrollTimer = scrollCooldown;
             }
-            else if (scroll > 0) // Scroll up
+            else if (scroll > 0)
             {
                 keyCount = (keyCount - 1 + selectionParts.Length) % selectionParts.Length;
                 scrollTimer = scrollCooldown;
             }
 
-            // Update selection visuals
+            // Update UI
             for (int i = 0; i < selectionParts.Length; i++)
-            {
                 selectionParts[i].SetActive(i == keyCount);
-            }
 
             WeaponName.text = getWeaponName(keyCount);
         }
 
+        // Confirm selection (e.g., press M)
         if (Input.GetKeyDown(KeyCode.M))
         {
             WeaponManager.instance.EquipWeapon(WeaponName.text);
             Debug.Log("Equipped: " + WeaponName.text);
+
+            isMenuActive = false;
             Menu.SetActive(false);
             BG.SetActive(false);
+            Time.timeScale = 1f;
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        // Cancel menu (e.g., press Escape)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isMenuActive = false;
+            Menu.SetActive(false);
+            BG.SetActive(false);
+            Time.timeScale = 1f;
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
- /*   public void AddWeapon(int index)
-    {
-        
-        if (!isMenuActive) return;
-        Weapons[index].SetActive(true);
-        Debug.Log("Weapon added");
-    }
 
-*/
+    /*   public void AddWeapon(int index)
+       {
+
+           if (!isMenuActive) return;
+           Weapons[index].SetActive(true);
+           Debug.Log("Weapon added");
+       }
+
+   */
 
     string getWeaponName(int index)
     {

@@ -9,9 +9,9 @@ public class ZombChasingState : StateMachineBehaviour
     Transform player;
     NavMeshAgent agent;
 
-    public float ChaseSpeed = 6f;
+    public float ChaseSpeed = 2f;
 
-    public float stopChasingDistance = 21f;
+    public float stopChasingDistance = 45f;
     public float attackingDistance = 1f;
 
 

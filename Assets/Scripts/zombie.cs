@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class zombie : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] public int HP = 100;
+    [SerializeField] public int HP = 50;
     public Animator animator;
     private NavMeshAgent navAgent;
 
